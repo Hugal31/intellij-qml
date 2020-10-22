@@ -58,18 +58,18 @@ public interface QmlTypes {
   IElementType LBRACE = new QmlTokenType("{");
   IElementType LBRACKET = new QmlTokenType("[");
   IElementType LPAREN = new QmlTokenType("(");
+  IElementType OTHER_VALUE = new QmlTokenType("other_value");
   IElementType RBRACE = new QmlTokenType("}");
   IElementType RBRACKET = new QmlTokenType("]");
   IElementType RPAREN = new QmlTokenType(")");
   IElementType SEMICOLON = new QmlTokenType(";");
   IElementType STRING = new QmlTokenType("string");
   IElementType TRUE = new QmlTokenType("true");
-  IElementType VALUE = new QmlTokenType("value");
 
   class Factory {
     public static PsiElement createElement(ASTNode node) {
       IElementType type = node.getElementType();
-       if (type == ARGUMENT) {
+      if (type == ARGUMENT) {
         return new QmlArgumentImpl(node);
       }
       else if (type == ATTRIBUTE) {

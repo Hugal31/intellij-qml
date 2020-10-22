@@ -38,7 +38,7 @@ FILE
         PsiElement(identifier)('button.text')
       PsiWhiteSpace(' ')
       QmlAttributeAssignmentImpl(ATTRIBUTE_ASSIGNMENT)
-        PsiElement(value)('!==')
+        PsiElement(other_value)('!==')
       PsiWhiteSpace(' ')
       QmlAttributeAssignmentImpl(ATTRIBUTE_ASSIGNMENT)
         PsiElement(string)('"cool"')

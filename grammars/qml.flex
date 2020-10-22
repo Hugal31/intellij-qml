@@ -65,7 +65,7 @@ SQ_STRING="\'"[^\']*"\'"
 [a-zA-Z0-9\._]+        { return IDENTIFIER; }
 {STRING}               { return STRING; }
 {SQ_STRING}            { return STRING; }
-[a-zA-Z0-9\.\+\/\*\&\!\=\-\>\<]+   { return VALUE; }
+[a-zA-Z0-9\.\+\/\*\&\!\=\-\>\<]+   { return OTHER_VALUE; }
 
 
 [^] { return BAD_CHARACTER; }

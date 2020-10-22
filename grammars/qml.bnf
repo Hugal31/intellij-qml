@@ -60,7 +60,7 @@ body ::= '{' (property_definition|signal_definition|attribute_assignment|method_
 type ::= 'double'|'real'|identifier
 
 attribute_assignment ::= (attribute ':')? attribute_value ';'?
-private item ::= list|object|string|boolean|number|identifier|value
+private item ::= list|object|string|boolean|number|identifier|other_value
 private attribute_value ::= method_call|method_body|item
 
 property_definition ::= 'default'? 'readonly'? 'property' ('alias'|'var'|type) property (':' attribute_value)?
@@ -72,7 +72,7 @@ method_attribute ::= 'function' method '(' (parameter ',')* parameter? ')' metho
 method_call ::= method '(' (argument ',')* argument? ')'
 
 method_body ::= '{' javascript '}'
-javascript ::= ('{' javascript '}'|'var'|'['|']'|'('|')'|','|':'|';'|string|identifier|number|value)*
+javascript ::= ('{' javascript '}'|'var'|'['|']'|'('|')'|','|':'|';'|string|identifier|number|other_value)*
 
 list ::= '[' item? (',' item)* ']'
 
@@ -81,7 +81,7 @@ attribute ::= identifier
 signal ::= identifier
 parameter ::= identifier
 method ::= identifier
-argument ::= string|boolean|number|identifier|value
+argument ::= string|boolean|number|identifier|other_value
 
 private number ::= integer|float
 private boolean ::= 'true'|'false'

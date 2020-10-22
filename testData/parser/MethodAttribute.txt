@@ -39,7 +39,7 @@ FILE
             PsiWhiteSpace(' ')
             PsiElement(identifier)('rect.width')
             PsiWhiteSpace(' ')
-            PsiElement(value)('/')
+            PsiElement(other_value)('/')
             PsiWhiteSpace(' ')
             PsiElement(integer)('2')
             PsiElement(;)(';')

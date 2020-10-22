@@ -619,7 +619,7 @@ public class _QmlLexer implements FlexLexer {
             // fall through
           case 34: break;
           case 2: 
-            { return VALUE;
+            { return OTHER_VALUE;
             } 
             // fall through
           case 35: break;
