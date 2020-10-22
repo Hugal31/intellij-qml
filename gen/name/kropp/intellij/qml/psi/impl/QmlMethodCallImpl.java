@@ -28,14 +28,14 @@ public class QmlMethodCallImpl extends ASTWrapperPsiElement implements QmlMethod
 
   @Override
   @NotNull
-  public List<QmlArgument> getArgumentList() {
-    return PsiTreeUtil.getChildrenOfTypeAsList(this, QmlArgument.class);
+  public QmlMethod getMethod() {
+    return findNotNullChildByClass(QmlMethod.class);
   }
 
   @Override
   @NotNull
-  public QmlMethod getMethod() {
-    return findNotNullChildByClass(QmlMethod.class);
+  public List<QmlValue> getValueList() {
+    return PsiTreeUtil.getChildrenOfTypeAsList(this, QmlValue.class);
   }
 
 }

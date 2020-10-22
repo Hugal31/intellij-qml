@@ -69,7 +69,7 @@ signal_parameter ::= ('var'|type) parameter
 
 method_attribute ::= 'function' method '(' (parameter ',')* parameter? ')' method_body
 
-method_call ::= method '(' (argument ',')* argument? ')'
+method_call ::= method '(' (value ',')* value? ')'
 
 method_body ::= '{' javascript '}'
 javascript ::= ('{' javascript '}'|'var'|'['|']'|'('|')'|','|':'|';'|string|identifier|number|other_value)*
@@ -81,7 +81,7 @@ attribute ::= identifier
 signal ::= identifier
 parameter ::= identifier
 method ::= identifier
-argument ::= string|boolean|number|identifier|other_value
+value ::= string|boolean|number|identifier|other_value
 
 private number ::= integer|float
 private boolean ::= 'true'|'false'

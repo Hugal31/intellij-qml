@@ -6,10 +6,6 @@ import com.intellij.psi.PsiElementVisitor;
 
 public class QmlVisitor extends PsiElementVisitor {
 
-  public void visitArgument(@NotNull QmlArgument o) {
-    visitPsiElement(o);
-  }
-
   public void visitAttribute(@NotNull QmlAttribute o) {
     visitPsiElement(o);
   }
@@ -107,6 +103,10 @@ public class QmlVisitor extends PsiElementVisitor {
   }
 
   public void visitType(@NotNull QmlType o) {
+    visitPsiElement(o);
+  }
+
+  public void visitValue(@NotNull QmlValue o) {
     visitPsiElement(o);
   }
 

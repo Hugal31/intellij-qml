@@ -8,9 +8,9 @@ import com.intellij.psi.PsiElement;
 public interface QmlMethodCall extends QmlPsiElement {
 
   @NotNull
-  List<QmlArgument> getArgumentList();
+  QmlMethod getMethod();
 
   @NotNull
-  QmlMethod getMethod();
+  List<QmlValue> getValueList();
 
 }

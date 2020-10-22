@@ -8,7 +8,6 @@ import name.kropp.intellij.qml.psi.impl.*;
 
 public interface QmlTypes {
 
-  IElementType ARGUMENT = new QmlElementType("ARGUMENT");
   IElementType ATTRIBUTE = new QmlElementType("ATTRIBUTE");
   IElementType ATTRIBUTE_ASSIGNMENT = new QmlElementType("ATTRIBUTE_ASSIGNMENT");
   IElementType BLOCK_COMMENT = new QmlElementType("BLOCK_COMMENT");
@@ -34,6 +33,7 @@ public interface QmlTypes {
   IElementType SIGNAL_DEFINITION = new QmlElementType("SIGNAL_DEFINITION");
   IElementType SIGNAL_PARAMETER = new QmlElementType("SIGNAL_PARAMETER");
   IElementType TYPE = new QmlElementType("TYPE");
+  IElementType VALUE = new QmlElementType("VALUE");
   IElementType VERSION = new QmlElementType("VERSION");
 
   IElementType COLON = new QmlTokenType(":");
@@ -69,10 +69,7 @@ public interface QmlTypes {
   class Factory {
     public static PsiElement createElement(ASTNode node) {
       IElementType type = node.getElementType();
-      if (type == ARGUMENT) {
-        return new QmlArgumentImpl(node);
-      }
-      else if (type == ATTRIBUTE) {
+      if (type == ATTRIBUTE) {
         return new QmlAttributeImpl(node);
       }
       else if (type == ATTRIBUTE_ASSIGNMENT) {
@@ -146,6 +143,9 @@ public interface QmlTypes {
       }
       else if (type == TYPE) {
         return new QmlTypeImpl(node);
+      }
+      else if (type == VALUE) {
+        return new QmlValueImpl(node);
       }
       else if (type == VERSION) {
         return new QmlVersionImpl(node);

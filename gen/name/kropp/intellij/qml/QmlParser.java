@@ -36,21 +36,6 @@ public class QmlParser implements PsiParser, LightPsiParser {
   }
 
   /* ********************************************************** */
-  // string|boolean|number|identifier|other_value
-  public static boolean argument(PsiBuilder b, int l) {
-    if (!recursion_guard_(b, l, "argument")) return false;
-    boolean r;
-    Marker m = enter_section_(b, l, _NONE_, ARGUMENT, "<argument>");
-    r = consumeToken(b, STRING);
-    if (!r) r = boolean_$(b, l + 1);
-    if (!r) r = number(b, l + 1);
-    if (!r) r = consumeToken(b, IDENTIFIER);
-    if (!r) r = consumeToken(b, OTHER_VALUE);
-    exit_section_(b, l, m, r, false, null);
-    return r;
-  }
-
-  /* ********************************************************** */
   // identifier
   public static boolean attribute(PsiBuilder b, int l) {
     if (!recursion_guard_(b, l, "attribute")) return false;
@@ -440,7 +425,7 @@ public class QmlParser implements PsiParser, LightPsiParser {
   }
 
   /* ********************************************************** */
-  // method '(' (argument ',')* argument? ')'
+  // method '(' (value ',')* value? ')'
   public static boolean method_call(PsiBuilder b, int l) {
     if (!recursion_guard_(b, l, "method_call")) return false;
     if (!nextTokenIs(b, IDENTIFIER)) return false;
@@ -455,7 +440,7 @@ public class QmlParser implements PsiParser, LightPsiParser {
     return r;
   }
 
-  // (argument ',')*
+  // (value ',')*
   private static boolean method_call_2(PsiBuilder b, int l) {
     if (!recursion_guard_(b, l, "method_call_2")) return false;
     while (true) {
@@ -466,21 +451,21 @@ public class QmlParser implements PsiParser, LightPsiParser {
     return true;
   }
 
-  // argument ','
+  // value ','
   private static boolean method_call_2_0(PsiBuilder b, int l) {
     if (!recursion_guard_(b, l, "method_call_2_0")) return false;
     boolean r;
     Marker m = enter_section_(b);
-    r = argument(b, l + 1);
+    r = value(b, l + 1);
     r = r && consumeToken(b, COMMA);
     exit_section_(b, m, null, r);
     return r;
   }
 
-  // argument?
+  // value?
   private static boolean method_call_3(PsiBuilder b, int l) {
     if (!recursion_guard_(b, l, "method_call_3")) return false;
-    argument(b, l + 1);
+    value(b, l + 1);
     return true;
   }
 
@@ -750,6 +735,21 @@ public class QmlParser implements PsiParser, LightPsiParser {
     r = consumeToken(b, KEYWORD_DOUBLE);
     if (!r) r = consumeToken(b, KEYWORD_REAL);
     if (!r) r = consumeToken(b, IDENTIFIER);
+    exit_section_(b, l, m, r, false, null);
+    return r;
+  }
+
+  /* ********************************************************** */
+  // string|boolean|number|identifier|other_value
+  public static boolean value(PsiBuilder b, int l) {
+    if (!recursion_guard_(b, l, "value")) return false;
+    boolean r;
+    Marker m = enter_section_(b, l, _NONE_, VALUE, "<value>");
+    r = consumeToken(b, STRING);
+    if (!r) r = boolean_$(b, l + 1);
+    if (!r) r = number(b, l + 1);
+    if (!r) r = consumeToken(b, IDENTIFIER);
+    if (!r) r = consumeToken(b, OTHER_VALUE);
     exit_section_(b, l, m, r, false, null);
     return r;
   }
