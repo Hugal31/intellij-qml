@@ -25,23 +25,17 @@ import static name.kropp.intellij.qml.psi.QmlTypes.*;
 
 END_OF_LINE_COMMENT="//"[^\n]*
 BLOCK_COMMENT="/*" ( ([^"*"]|[\r\n])* ("*"+ [^"*""/"] )? )* ("*" | "*"+"/")?
-NEWLINE=[\n]+
-WHITESPACE=[ \t]+
+WHITESPACE=[ \t\n]+
 STRING="\""[^\"]*"\""
 SQ_STRING="\'"[^\']*"\'"
 
-%state IMPORT PROPERTYVALUE
+%state IMPORT
 
 %%
-
-<PROPERTYVALUE> {
-  [a-zA-Z0-9\t\.\+\/\*\&\!\?\:\=\-\>\<]+   { return VALUE; }
-}
 
 {END_OF_LINE_COMMENT}  { return LINE_COMMENT; }
 {BLOCK_COMMENT}        { return BLOCK_COMMENT; }
 {WHITESPACE}           { return WHITE_SPACE; }
-{NEWLINE}              { yybegin(YYINITIAL); return WHITE_SPACE; }
 "import"               { return KEYWORD_IMPORT; }
 "alias"                { return KEYWORD_ALIAS; }
 "as"                   { return KEYWORD_AS; }
@@ -63,7 +57,7 @@ SQ_STRING="\'"[^\']*"\'"
 "\]"                   { return RBRACKET; }
 "\("                   { return LPAREN; }
 "\)"                   { return RPAREN; }
-":"                    { yybegin(PROPERTYVALUE); return COLON; }
+":"                    { return COLON; }
 ";"                    { return SEMICOLON; }
 ","                    { return COMMA; }
 [0-9]+"."[0-9]+        { return FLOAT; }
