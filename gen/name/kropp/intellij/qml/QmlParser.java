@@ -253,7 +253,7 @@ public class QmlParser implements PsiParser, LightPsiParser {
   }
 
   /* ********************************************************** */
-  // ('{' javascript '}'|'var'|'['|']'|'('|')'|','|':'|';'|value)*
+  // ('{' javascript '}'|'var'|'['|']'|'('|')'|','|':'|';'|javascript_keywords|value)*
   public static boolean javascript(PsiBuilder b, int l) {
     if (!recursion_guard_(b, l, "javascript")) return false;
     Marker m = enter_section_(b, l, _COLLAPSE_, JAVASCRIPT, "<javascript>");
@@ -266,7 +266,7 @@ public class QmlParser implements PsiParser, LightPsiParser {
     return true;
   }
 
-  // '{' javascript '}'|'var'|'['|']'|'('|')'|','|':'|';'|value
+  // '{' javascript '}'|'var'|'['|']'|'('|')'|','|':'|';'|javascript_keywords|value
   private static boolean javascript_0(PsiBuilder b, int l) {
     if (!recursion_guard_(b, l, "javascript_0")) return false;
     boolean r;
@@ -280,6 +280,7 @@ public class QmlParser implements PsiParser, LightPsiParser {
     if (!r) r = consumeToken(b, COMMA);
     if (!r) r = consumeToken(b, COLON);
     if (!r) r = consumeToken(b, SEMICOLON);
+    if (!r) r = javascript_keywords(b, l + 1);
     if (!r) r = value(b, l + 1);
     exit_section_(b, m, null, r);
     return r;
@@ -294,6 +295,22 @@ public class QmlParser implements PsiParser, LightPsiParser {
     r = r && javascript(b, l + 1);
     r = r && consumeToken(b, RBRACE);
     exit_section_(b, m, null, r);
+    return r;
+  }
+
+  /* ********************************************************** */
+  // KEYWORD_IF|KEYWORD_ELSE|KEYWORD_FOR|KEYWORD_WHILE|KEYWORD_DO|KEYWORD_RETURN
+  public static boolean javascript_keywords(PsiBuilder b, int l) {
+    if (!recursion_guard_(b, l, "javascript_keywords")) return false;
+    boolean r;
+    Marker m = enter_section_(b, l, _NONE_, JAVASCRIPT_KEYWORDS, "<javascript keywords>");
+    r = consumeToken(b, KEYWORD_IF);
+    if (!r) r = consumeToken(b, KEYWORD_ELSE);
+    if (!r) r = consumeToken(b, KEYWORD_FOR);
+    if (!r) r = consumeToken(b, KEYWORD_WHILE);
+    if (!r) r = consumeToken(b, KEYWORD_DO);
+    if (!r) r = consumeToken(b, KEYWORD_RETURN);
+    exit_section_(b, l, m, r, false, null);
     return r;
   }
 

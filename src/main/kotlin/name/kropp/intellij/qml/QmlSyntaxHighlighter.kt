@@ -39,6 +39,7 @@ class QmlSyntaxHighlighter : SyntaxHighlighterBase() {
     QmlTypes.STRING -> STRING_KEYS
     QmlTypes.INTEGER, QmlTypes.FLOAT -> NUMBER_KEYS
     QmlTypes.TRUE, QmlTypes.FALSE -> BOOLEAN_KEYS
+    QmlTypes.KEYWORD_IF, QmlTypes.KEYWORD_ELSE, QmlTypes.KEYWORD_FOR, QmlTypes.KEYWORD_WHILE, QmlTypes.KEYWORD_DO, QmlTypes.KEYWORD_RETURN -> KEYWORD_KEYS
     QmlTypes.LBRACE, QmlTypes.RBRACE, QmlTypes.LPAREN, QmlTypes.RPAREN, QmlTypes.LBRACKET, QmlTypes.RBRACKET -> PARENTHESES_KEYS
     QmlTypes.COLON, QmlTypes.SEMICOLON, QmlTypes.COMMA -> COLON_KEYS
     TokenType.BAD_CHARACTER -> BAD_CHAR_KEYS

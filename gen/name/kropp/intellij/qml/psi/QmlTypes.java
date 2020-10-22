@@ -16,6 +16,7 @@ public interface QmlTypes {
   IElementType IMPORT = new QmlElementType("IMPORT");
   IElementType IMPORTS = new QmlElementType("IMPORTS");
   IElementType JAVASCRIPT = new QmlElementType("JAVASCRIPT");
+  IElementType JAVASCRIPT_KEYWORDS = new QmlElementType("JAVASCRIPT_KEYWORDS");
   IElementType LINE_COMMENT = new QmlElementType("LINE_COMMENT");
   IElementType LIST = new QmlElementType("LIST");
   IElementType METHOD = new QmlElementType("METHOD");
@@ -45,16 +46,22 @@ public interface QmlTypes {
   IElementType KEYWORD_ALIAS = new QmlTokenType("alias");
   IElementType KEYWORD_AS = new QmlTokenType("as");
   IElementType KEYWORD_DEFAULT = new QmlTokenType("default");
+  IElementType KEYWORD_DO = new QmlTokenType("KEYWORD_DO");
   IElementType KEYWORD_DOUBLE = new QmlTokenType("double");
+  IElementType KEYWORD_ELSE = new QmlTokenType("KEYWORD_ELSE");
+  IElementType KEYWORD_FOR = new QmlTokenType("KEYWORD_FOR");
   IElementType KEYWORD_FUNCTION = new QmlTokenType("function");
+  IElementType KEYWORD_IF = new QmlTokenType("KEYWORD_IF");
   IElementType KEYWORD_IMPORT = new QmlTokenType("import");
   IElementType KEYWORD_PRAGMA = new QmlTokenType("pragma");
   IElementType KEYWORD_PROPERTY = new QmlTokenType("property");
   IElementType KEYWORD_READONLY = new QmlTokenType("readonly");
   IElementType KEYWORD_REAL = new QmlTokenType("real");
+  IElementType KEYWORD_RETURN = new QmlTokenType("KEYWORD_RETURN");
   IElementType KEYWORD_SIGNAL = new QmlTokenType("signal");
   IElementType KEYWORD_SINGLETON = new QmlTokenType("Singleton");
   IElementType KEYWORD_VAR = new QmlTokenType("var");
+  IElementType KEYWORD_WHILE = new QmlTokenType("KEYWORD_WHILE");
   IElementType LBRACE = new QmlTokenType("{");
   IElementType LBRACKET = new QmlTokenType("[");
   IElementType LPAREN = new QmlTokenType("(");
@@ -92,6 +99,9 @@ public interface QmlTypes {
       }
       else if (type == JAVASCRIPT) {
         return new QmlJavascriptImpl(node);
+      }
+      else if (type == JAVASCRIPT_KEYWORDS) {
+        return new QmlJavascriptKeywordsImpl(node);
       }
       else if (type == LINE_COMMENT) {
         return new QmlLineCommentImpl(node);

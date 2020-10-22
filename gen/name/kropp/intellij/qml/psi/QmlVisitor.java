@@ -38,6 +38,10 @@ public class QmlVisitor extends PsiElementVisitor {
     visitPsiElement(o);
   }
 
+  public void visitJavascriptKeywords(@NotNull QmlJavascriptKeywords o) {
+    visitPsiElement(o);
+  }
+
   public void visitLineComment(@NotNull QmlLineComment o) {
     visitPsiElement(o);
   }

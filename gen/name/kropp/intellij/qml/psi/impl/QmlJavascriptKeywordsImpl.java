@@ -11,37 +11,19 @@ import static name.kropp.intellij.qml.psi.QmlTypes.*;
 import com.intellij.extapi.psi.ASTWrapperPsiElement;
 import name.kropp.intellij.qml.psi.*;
 
-public class QmlJavascriptImpl extends ASTWrapperPsiElement implements QmlJavascript {
+public class QmlJavascriptKeywordsImpl extends ASTWrapperPsiElement implements QmlJavascriptKeywords {
 
-  public QmlJavascriptImpl(@NotNull ASTNode node) {
+  public QmlJavascriptKeywordsImpl(@NotNull ASTNode node) {
     super(node);
   }
 
   public void accept(@NotNull QmlVisitor visitor) {
-    visitor.visitJavascript(this);
+    visitor.visitJavascriptKeywords(this);
   }
 
   public void accept(@NotNull PsiElementVisitor visitor) {
     if (visitor instanceof QmlVisitor) accept((QmlVisitor)visitor);
     else super.accept(visitor);
-  }
-
-  @Override
-  @NotNull
-  public List<QmlJavascript> getJavascriptList() {
-    return PsiTreeUtil.getChildrenOfTypeAsList(this, QmlJavascript.class);
-  }
-
-  @Override
-  @NotNull
-  public List<QmlJavascriptKeywords> getJavascriptKeywordsList() {
-    return PsiTreeUtil.getChildrenOfTypeAsList(this, QmlJavascriptKeywords.class);
-  }
-
-  @Override
-  @NotNull
-  public List<QmlValue> getValueList() {
-    return PsiTreeUtil.getChildrenOfTypeAsList(this, QmlValue.class);
   }
 
 }

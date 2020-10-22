@@ -11,6 +11,9 @@ public interface QmlJavascript extends QmlPsiElement {
   List<QmlJavascript> getJavascriptList();
 
   @NotNull
+  List<QmlJavascriptKeywords> getJavascriptKeywordsList();
+
+  @NotNull
   List<QmlValue> getValueList();
 
 }
