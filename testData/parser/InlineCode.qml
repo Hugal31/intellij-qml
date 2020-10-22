@@ -3,5 +3,6 @@ MouseArea {
     onClicked: {
         var scenePos = mapToItem(null, mouseX, mouseY);
         console.log("MouseArea was clicked at scene pos " + scenePos);
+        var a = true;
     }
 }

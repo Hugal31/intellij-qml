@@ -32,4 +32,10 @@ public class QmlJavascriptImpl extends ASTWrapperPsiElement implements QmlJavasc
     return PsiTreeUtil.getChildrenOfTypeAsList(this, QmlJavascript.class);
   }
 
+  @Override
+  @NotNull
+  public List<QmlValue> getValueList() {
+    return PsiTreeUtil.getChildrenOfTypeAsList(this, QmlValue.class);
+  }
+
 }

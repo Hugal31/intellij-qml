@@ -72,7 +72,7 @@ method_attribute ::= 'function' method '(' (parameter ',')* parameter? ')' metho
 method_call ::= method '(' (value ',')* value? ')'
 
 method_body ::= '{' javascript '}'
-javascript ::= ('{' javascript '}'|'var'|'['|']'|'('|')'|','|':'|';'|string|identifier|number|other_value)*
+javascript ::= ('{' javascript '}'|'var'|'['|']'|'('|')'|','|':'|';'|value)*
 
 list ::= '[' item? (',' item)* ']'
 
